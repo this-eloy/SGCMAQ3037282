@@ -1,4 +1,4 @@
-package framework.dao;
+package model;
 
 // Bean -- Objeto Persistente.
 public class Usuario {
