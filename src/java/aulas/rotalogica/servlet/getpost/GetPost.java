@@ -55,8 +55,6 @@ public class GetPost extends HttpServlet {
         html+= "</head>";
         html+= "<body>";
         html+= "<h1>Dados Recebidos Formulario</h1>";
-        html+= "</body>";
-        html+= "</html>";
         
         html+= "<table>";
         
@@ -77,7 +75,10 @@ public class GetPost extends HttpServlet {
         }
         
         html+= "</table>";
+        html += "<button onclick=\"window.location.href='/sgcmaq3037282/aulas/rotafisica/servlet/getpost/formulario_getpost.html'\">Adicionar</button>";
     
+        html+= "</body>";
+        html+= "</html>";
         
         response.setContentType("text.html");
         PrintWriter pw = response.getWriter();
@@ -91,7 +92,13 @@ public class GetPost extends HttpServlet {
         System.out.println("\n\n GET \n\n");
         processRequest(req, resp);
     }
-    
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("\n\n POST \n\n");
+        processRequest(req, resp);
+    }
+ 
     @Override
     public void destroy() {
         dados.clear();

@@ -1,14 +1,20 @@
+<%-- 
+    Document   : formulario
+    Created on : 10 de set. de 2026, 09:14:58
+    Author     : aluno
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Formulário</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Formulário JSP</title>
     </head>
     <body>
-        <h1>Formulário GetPost</h1>
-        <!--<form action="/sgcmaq3037282/aulas/rotalogica/servlet/getpost" method=get>-->
-        <form action="/sgcmaq3037282/aulas/rotalogica/servlet/getpost" method=post>
+        <h1>Formulário JSP</h1>
+        
+        <form action="/sgcmaq3037282/aulas/rotalogica/jsp/servletpost" method=post>
             <label for ="campoA">Campo A</label>
             <input type="number" id="campoA" name="campoA" required="">
             <br>
@@ -23,5 +29,6 @@
             <br>
             <button type="submit">Salvar</button>
         </form>
+        
     </body>
 </html>
