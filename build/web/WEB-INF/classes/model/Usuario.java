@@ -1,7 +1,4 @@
 package model;
-import framework.util.Hash;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 
 // Bean -- Objeto Persistente.
 public class Usuario {
@@ -37,13 +34,11 @@ public class Usuario {
         return senha;
     }
 
-    public void setSenha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+    public void setSenha(String senha) {
         if( senha == null ) {
             throw new IllegalArgumentException("senha não pode ser null");
         }
-        String aux = Integer.toString(getId()) + senha;
-        String hash = Hash.stringToHash(aux, "SHA-256");
-        this.senha = hash;
+        this.senha = senha;
     }
 
     @Override

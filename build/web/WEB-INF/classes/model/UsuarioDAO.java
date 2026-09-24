@@ -3,6 +3,8 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import framework.config.AppConfig;
 import framework.dao.DataAccessObject;
@@ -12,7 +14,7 @@ import java.sql.Statement;
 public class UsuarioDAO extends DataAccessObject <Usuario> {
 
     @Override
-    public void insert(Usuario t) throws Exception {
+    public void insert(Usuario t) throws SQLException {
         
         Connection connection = DataBaseConnections.getInstance().getConnection();
         
@@ -36,7 +38,7 @@ public class UsuarioDAO extends DataAccessObject <Usuario> {
     }
 
     @Override
-    public void update(Usuario t) throws Exception {
+    public void update(Usuario t) throws SQLException {
         
         Connection connection = DataBaseConnections.getInstance().getConnection();
         
@@ -60,7 +62,7 @@ public class UsuarioDAO extends DataAccessObject <Usuario> {
     }
 
     @Override
-    public void delete(Usuario t) throws Exception {
+    public void delete(Usuario t) throws SQLException {
         
         Connection connection = DataBaseConnections.getInstance().getConnection();
         
@@ -82,7 +84,7 @@ public class UsuarioDAO extends DataAccessObject <Usuario> {
     }
 
     @Override
-    public Usuario getUnique(Object... values) throws Exception {
+    public Usuario getUnique(Object... values) throws SQLException {
         
         Usuario resultado = null;
         
@@ -120,7 +122,7 @@ public class UsuarioDAO extends DataAccessObject <Usuario> {
     }
 
     @Override
-    public ArrayList<Usuario> getAll() throws Exception {
+    public ArrayList<Usuario> getAll() throws SQLException {
         
         ArrayList<Usuario> resultado = new ArrayList<>();
         

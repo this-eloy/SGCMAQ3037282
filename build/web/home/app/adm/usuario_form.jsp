@@ -35,8 +35,8 @@
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" value="<%= us != null ? us.getSenha() : "" %>" required>
             <br>
-            
-            <input type="submit" value="Salvar">
+       
+            <input type="submit" value="Salvar" onlick="window.location.href='/sgcmaq3037282/home/app/adm/usuario.jsp'">
             <!--<button type="submit">Salvar</button>-->
             
         </form>

@@ -56,21 +56,6 @@ public class FrontController extends HttpServlet {
     
     private void doGetUsuario(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         
-        String action = req.getParameter("action"); 
-        
-        if((action != null) && (action.equals("delete"))){
-            
-            int id = Integer.parseInt(req.getParameter("id"));
-
-            Usuario us = new Usuario(id); // bean
-
-            UsuarioDAO dao = new UsuarioDAO(); //persistencia do bean
-            
-            dao.delete(us);
-        }
-        
-        req.getRequestDispatcher("/home/app/adm/usuario.jsp").forward(req, resp);
-        
     }    
     
     private void doPostUsuario(HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -89,8 +74,6 @@ public class FrontController extends HttpServlet {
         
         if(action.equals("new")) dao.insert(us);
         if(action.equals("update")) dao.update(us);
-        
-        req.getRequestDispatcher("/home/app/adm/usuario.jsp").forward(req, resp);
         
     }    
   
