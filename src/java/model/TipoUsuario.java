@@ -10,9 +10,9 @@ package model;
  */
 public class TipoUsuario {
     private int id;
-    private String modulo_administrativo;
-    private String modulo_agendamento;
-    private String modulo_atendimento;
+    private String moduloAdministrativo;
+    private String moduloAgendamento;
+    private String moduloAtendimento;
 
     public TipoUsuario(int id) {
         setId(id);
@@ -29,37 +29,37 @@ public class TipoUsuario {
         this.id = id;
     }
 
-    public String getModulo_administrativo() {
-        return modulo_administrativo;
+    public String getModuloAdministrativo() {
+        return moduloAdministrativo;
     }
 
-    public void setModulo_administrativo(String modulo_administrativo) {
-        if( modulo_administrativo == null ) {
+    public void setModuloAdministrativo(String moduloAdministrativo) {
+        if( moduloAdministrativo == null ) {
             throw new IllegalArgumentException("senha não pode ser null");
         }
-        this.modulo_administrativo = modulo_administrativo;
+        this.moduloAdministrativo = moduloAdministrativo;
     }
 
-    public String getModulo_agendamento() {
-        return modulo_agendamento;
+    public String getModuloAgendamento() {
+        return moduloAgendamento;
     }
 
-    public void setModulo_agendamento(String modulo_agendamento) {
-        if( modulo_agendamento == null ) {
+    public void setModuloAgendamento(String moduloAgendamento) {
+        if( moduloAgendamento == null ) {
             throw new IllegalArgumentException("senha não pode ser null");
         }
-        this.modulo_agendamento = modulo_agendamento;
+        this.moduloAgendamento = moduloAgendamento;
     }
 
-    public String getModulo_atendimento() {
-        return modulo_atendimento;
+    public String getModuloAtendimento() {
+        return moduloAtendimento;
     }
 
-    public void setModulo_atendimento(String modulo_atendimento) {
-        if( modulo_atendimento == null ) {
+    public void setModuloAtendimento(String moduloAtendimento) {
+        if( moduloAtendimento == null ) {
             throw new IllegalArgumentException("senha não pode ser null");
         }
-        this.modulo_atendimento = modulo_atendimento;
+        this.moduloAtendimento = moduloAtendimento;
     }
      
    

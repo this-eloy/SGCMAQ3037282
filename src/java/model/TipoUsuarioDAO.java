@@ -1,4 +1,3 @@
-
 package model;
 import framework.config.AppConfig;
 import framework.dao.DataAccessObject;
@@ -9,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class TipoUsuarioDao extends DataAccessObject<TipoUsuario>{
+public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
 
     @Override
     public void insert(TipoUsuario t) throws Exception {
@@ -20,9 +19,9 @@ public class TipoUsuarioDao extends DataAccessObject<TipoUsuario>{
         PreparedStatement preparedStatement = connection.prepareStatement(dml);
         
         preparedStatement.setInt( 1, t.getId() );
-        preparedStatement.setString( 2, t.getModulo_administrativo());
-        preparedStatement.setString( 3, t.getModulo_agendamento());
-        preparedStatement.setString( 4, t.getModulo_atendimento());
+        preparedStatement.setString( 2, t.getModuloAdministrativo());
+        preparedStatement.setString( 3, t.getModuloAgendamento());
+        preparedStatement.setString( 4, t.getModuloAtendimento());
         
         if( AppConfig.getInstance().getConfig("settings", "verbose").equals("true") ) {
             System.out.println(preparedStatement);
@@ -42,9 +41,9 @@ public class TipoUsuarioDao extends DataAccessObject<TipoUsuario>{
         
         PreparedStatement preparedStatement = connection.prepareStatement(dml);
         
-        preparedStatement.setString( 1, t.getModulo_administrativo());
-        preparedStatement.setString( 2, t.getModulo_agendamento());
-        preparedStatement.setString( 3, t.getModulo_atendimento());
+        preparedStatement.setString( 1, t.getModuloAdministrativo());
+        preparedStatement.setString( 2, t.getModuloAgendamento());
+        preparedStatement.setString( 3, t.getModuloAtendimento());
         preparedStatement.setInt( 4, t.getId() );
         
         if( AppConfig.getInstance().getConfig("settings", "verbose").equals("true") ) {
@@ -102,9 +101,9 @@ public class TipoUsuarioDao extends DataAccessObject<TipoUsuario>{
             
             resultado = new TipoUsuario( (int) resultSet.getObject(1) );
             
-            resultado.setModulo_administrativo( (String) resultSet.getObject(2) );
-            resultado.setModulo_agendamento( (String) resultSet.getObject(3) );
-            resultado.setModulo_atendimento( (String) resultSet.getObject(4) );
+            resultado.setModuloAdministrativo( (String) resultSet.getObject(2) );
+            resultado.setModuloAgendamento( (String) resultSet.getObject(3) );
+            resultado.setModuloAtendimento( (String) resultSet.getObject(4) );
         
             
         }
@@ -131,9 +130,9 @@ public class TipoUsuarioDao extends DataAccessObject<TipoUsuario>{
         while( resultSet.next() ) {
             
             TipoUsuario tipoUsuario = new TipoUsuario( (int) resultSet.getObject( 1 ) );
-            tipoUsuario.setModulo_administrativo ( (String) resultSet.getObject( 2 ) );
-            tipoUsuario.setModulo_agendamento ( (String) resultSet.getObject( 3 ) );
-            tipoUsuario.setModulo_atendimento ( (String) resultSet.getObject( 4 ) );
+            tipoUsuario.setModuloAdministrativo ( (String) resultSet.getObject( 2 ) );
+            tipoUsuario.setModuloAgendamento ( (String) resultSet.getObject( 3 ) );
+            tipoUsuario.setModuloAtendimento ( (String) resultSet.getObject( 4 ) );
             
             resultado.add(tipoUsuario);
             
