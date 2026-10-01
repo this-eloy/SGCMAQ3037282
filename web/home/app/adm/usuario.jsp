@@ -21,7 +21,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nome</th>
-                <th></th>
+                <th>Tipo Usuário Id</th>
                 <th></th>
             </tr>
             
@@ -29,6 +29,7 @@
                 <tr>
                     <td><%= us.getId() %></td>
                     <td><%= us.getNome() %></td>
+                    <td><%= us.getTipoUsuarioId()%></td>
                     
                     <td><a href="/sgcmaq3037282/home/app/adm/usuario_form.jsp?id=<%= us.getId() %>">Alterar</a></td>
                

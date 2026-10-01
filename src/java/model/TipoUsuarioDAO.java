@@ -1,17 +1,19 @@
 package model;
+
 import framework.config.AppConfig;
 import framework.dao.DataAccessObject;
 import framework.dao.DataBaseConnections;
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
+public class TipoUsuarioDAO extends DataAccessObject <TipoUsuario> {
 
     @Override
     public void insert(TipoUsuario t) throws Exception {
+       
         Connection connection = DataBaseConnections.getInstance().getConnection();
         
         String dml = "INSERT INTO tipo_usuario (id, modulo_administrativo, modulo_agendamento, modulo_atendimento) values (?, ?, ?, ?)";
@@ -19,9 +21,9 @@ public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
         PreparedStatement preparedStatement = connection.prepareStatement(dml);
         
         preparedStatement.setInt( 1, t.getId() );
-        preparedStatement.setString( 2, t.getModuloAdministrativo());
-        preparedStatement.setString( 3, t.getModuloAgendamento());
-        preparedStatement.setString( 4, t.getModuloAtendimento());
+        preparedStatement.setString( 2, t.getModuloAdministrativo() );
+        preparedStatement.setString( 3, t.getModuloAgendamento() );
+        preparedStatement.setString( 4, t.getModuloAtendimento() );
         
         if( AppConfig.getInstance().getConfig("settings", "verbose").equals("true") ) {
             System.out.println(preparedStatement);
@@ -31,20 +33,22 @@ public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
         
         preparedStatement.close();
         DataBaseConnections.getInstance().closeConnection(connection);
+        
     }
 
     @Override
     public void update(TipoUsuario t) throws Exception {
+        
         Connection connection = DataBaseConnections.getInstance().getConnection();
         
         String dml = "UPDATE tipo_usuario SET modulo_administrativo = ?, modulo_agendamento = ?, modulo_atendimento = ? WHERE id = ?";
         
         PreparedStatement preparedStatement = connection.prepareStatement(dml);
         
-        preparedStatement.setString( 1, t.getModuloAdministrativo());
-        preparedStatement.setString( 2, t.getModuloAgendamento());
-        preparedStatement.setString( 3, t.getModuloAtendimento());
         preparedStatement.setInt( 4, t.getId() );
+        preparedStatement.setString( 1, t.getModuloAdministrativo() );
+        preparedStatement.setString( 2, t.getModuloAgendamento() );
+        preparedStatement.setString( 3, t.getModuloAtendimento() );
         
         if( AppConfig.getInstance().getConfig("settings", "verbose").equals("true") ) {
             System.out.println(preparedStatement);
@@ -54,11 +58,12 @@ public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
         
         preparedStatement.close();
         DataBaseConnections.getInstance().closeConnection(connection);
-
+        
     }
 
     @Override
     public void delete(TipoUsuario t) throws Exception {
+        
         Connection connection = DataBaseConnections.getInstance().getConnection();
         
         String dml = "DELETE FROM tipo_usuario WHERE id = ?";
@@ -75,10 +80,12 @@ public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
         
         preparedStatement.close();
         DataBaseConnections.getInstance().closeConnection(connection);
+        
     }
 
     @Override
     public TipoUsuario getUnique(Object... values) throws Exception {
+        
         TipoUsuario resultado = null;
         
         String dql = "SELECT * FROM tipo_usuario WHERE id = ?";
@@ -104,7 +111,6 @@ public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
             resultado.setModuloAdministrativo( (String) resultSet.getObject(2) );
             resultado.setModuloAgendamento( (String) resultSet.getObject(3) );
             resultado.setModuloAtendimento( (String) resultSet.getObject(4) );
-        
             
         }
         
@@ -113,11 +119,13 @@ public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
         DataBaseConnections.getInstance().closeConnection(connection);
         
         return resultado;
+        
     }
 
     @Override
     public ArrayList<TipoUsuario> getAll() throws Exception {
-         ArrayList<TipoUsuario> resultado = new ArrayList<>();
+        
+        ArrayList<TipoUsuario> resultado = new ArrayList<>();
         
         String dql = "SELECT * FROM tipo_usuario";
         
@@ -130,9 +138,10 @@ public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
         while( resultSet.next() ) {
             
             TipoUsuario tipoUsuario = new TipoUsuario( (int) resultSet.getObject( 1 ) );
-            tipoUsuario.setModuloAdministrativo ( (String) resultSet.getObject( 2 ) );
-            tipoUsuario.setModuloAgendamento ( (String) resultSet.getObject( 3 ) );
-            tipoUsuario.setModuloAtendimento ( (String) resultSet.getObject( 4 ) );
+            
+            tipoUsuario.setModuloAdministrativo( (String) resultSet.getObject(2) );
+            tipoUsuario.setModuloAgendamento( (String) resultSet.getObject(3) );
+            tipoUsuario.setModuloAtendimento( (String) resultSet.getObject(4) );
             
             resultado.add(tipoUsuario);
             
@@ -143,6 +152,7 @@ public class TipoUsuarioDAO extends DataAccessObject<TipoUsuario>{
         DataBaseConnections.getInstance().closeConnection(connection);
         
         return resultado;
+        
     }
-    
+
 }

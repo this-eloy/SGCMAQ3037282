@@ -7,8 +7,10 @@ import java.security.NoSuchAlgorithmException;
 public class Usuario {
     
     private int id;
+    private int tipoUsuarioId;
     private String nome;
     private String senha;
+    
 
     public Usuario(int id) {
         setId(id);
@@ -23,7 +25,7 @@ public class Usuario {
             throw new IllegalArgumentException("id não pode ser < 0");
         }
         this.id = id;
-    }
+    } 
 
     public String getNome() {
         return nome;
@@ -44,7 +46,28 @@ public class Usuario {
         String aux = Integer.toString(getId()) + senha;
         String hash = Hash.stringToHash(aux, "SHA-256");
         this.senha = hash;
+   
     }
+    public void setSenhaHash(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+        if( senha == null ) {
+            throw new IllegalArgumentException("senha não pode ser null");
+        }
+ 
+        this.senha = senha;
+    }
+
+    public int getTipoUsuarioId() {
+        return tipoUsuarioId;
+    }
+
+    public void setTipoUsuarioId(int tipoUsuarioId) {
+        if( tipoUsuarioId < 0 ) {
+            throw new IllegalArgumentException("o id não pode ser < 0");
+        }
+        this.tipoUsuarioId = tipoUsuarioId;
+    }
+    
+    
 
     @Override
     public String toString() {
