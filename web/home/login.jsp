@@ -1,5 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="jakarta.servlet.http.Cookie" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +8,30 @@
         <title>Login</title>
     </head>
     <body>
+        <%
+            String id = "";
+            Cookie() cookies = request.getCookies();
+            if(cookies != null){
+                for(Cookie cookie : cookie){
+                    if(cookie.getName().equals("id")){
+                        id = cookie.getValue();
+                    }
+                   
+                }
+            }
+        %>
         <h1>Login</h1>
+        <form action="/sgcmaq3037282/home?task=login>" method="post">
+            
+            <label for="id">Id:</label>
+            <input type="number" id="id" name="id" value="<%=id%>" required> <br/>        
+            
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" value="" required><br/>
+            
+            
+            <input type="submit" value="Login">
+            
+        </form>
     </body>
 </html>

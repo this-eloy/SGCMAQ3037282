@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.*;
 import framework.log.ExceptionLogTrack;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpSession;
 
 
 public class FrontController extends HttpServlet {
@@ -18,6 +20,8 @@ public class FrontController extends HttpServlet {
         
         try {
             switch (task) {
+                
+            case "login": doDefault(req, resp); break;
             case "tipousuario": doGetTipoUsuario(req, resp); break;
             case "usuario": doGetUsuario(req, resp); break;
                         
@@ -39,6 +43,7 @@ public class FrontController extends HttpServlet {
         try {
             switch (task) {
                 
+            case "login": doPostLogin(req, resp); break;
             case "tipousuario": doPostTipoUsuario(req, resp); break;
             case "usuario": doPostUsuario(req, resp); break;
   
@@ -97,8 +102,45 @@ public class FrontController extends HttpServlet {
         
         
     }
-       
     
+    private void doPostLogin(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        
+
+        int id = Integer.parseInt( req.getParameter("id") );
+        String senha = req.getParameter("senha");
+        
+        UsuarioDAO dao = new UsuarioDAO(); // dao
+        
+        Usuario us = dao.getUnique(id); 
+        
+        Usuario usTry = new Usuario(id); 
+        usTry.setSenha(senha);
+        
+        Cookie cookieId = new Cookie("id", String.valueOf(id));
+        
+        cookieId.setMaxAge(60 * 2);
+        resp.addCookie(cookieId);
+        
+        if( ( us != null ) && ( us.getSenha().equals(usTry.getSenha() ))){
+            TipoUsuario usTp = new TipoUsuarioDAO().getUnique(us.getTipoUsuarioId());
+            
+            HttpSession sessao = req.getSession(false);
+            if( sessao != null){
+                sessao.invalidate();
+            }
+            sessao = req.getSession(true);
+            
+            sessao.setMaxInactiveInterval( 60 * 10);         //secs
+            sessao.setAttribute("tipo_usuario_sessao", usTp);
+            sessao.setAttribute("usuario_sessao", us);
+            
+            req.getRequestDispatcher("/home/app/adm/menu.jsp").forward(req, resp);
+            
+        }else{
+            req.getRequestDispatcher("/home/login.jsp").forward(req, resp);
+        } 
+    }
+       
     private void doPostUsuario(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         
         String action = req.getParameter("action"); // new || update
@@ -160,6 +202,7 @@ public class FrontController extends HttpServlet {
         req.getRequestDispatcher("/home/app/adm/tipousuario.jsp").forward(req, resp);
         
     }
+    
     
   
 }
