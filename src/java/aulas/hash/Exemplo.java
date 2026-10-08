@@ -32,7 +32,7 @@ public class Exemplo {
         
         System.out.println("###");
         
-        String senha = "IFSP@81";
+        String senha = "10241024";
         String hash = Hash.stringToHash(senha,"SHA-256");
         System.out.println(senha + " | " + hash + " | " + hash.length());
         

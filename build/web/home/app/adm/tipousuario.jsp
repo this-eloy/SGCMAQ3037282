@@ -14,7 +14,9 @@
             ArrayList<TipoUsuario> lista = new TipoUsuarioDAO().getAll();
         %>
         
-        <h1>Usuários</h1>
+        <%@include file="/home/app/modulos.jsp"%>
+        
+        <h1>Tipos Usuários</h1>
         
         <table>
             
@@ -36,7 +38,7 @@
                     
                     <td><a href="/sgcmaq3037282/home/app/adm/tipousuario_form.jsp?id=<%= tpUs.getId() %>">Alterar</a></td>
                
-                    <td><a href="/sgcmaq3037282/home?task=usuario&action=delete&id=<%= tpUs.getId() %>" onclick="return confirm('Deseja realmente excluir Usuário ID = <%= tpUs.getId()%>?')" >Excluir</a></td>
+                    <td><a href="/sgcmaq3037282/home?task=tipousuario&action=delete&id=<%= tpUs.getId() %>" onclick="return confirm('Deseja realmente excluir Tipo Usuário ID = <%= tpUs.getId()%>?')" >Excluir</a></td>
 
                 </tr>
             <% } %>

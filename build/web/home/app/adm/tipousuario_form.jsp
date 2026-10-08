@@ -20,12 +20,15 @@
             }
         %>
         
+        <%@include file="/home/app/modulos.jsp"%>
+        
         <h1>Cadastro Tipo Usuário</h1>
         
         <form action="/sgcmaq3037282/home?task=tipousuario&action=<%= action %>" method="post">
             
             <label for="id">Id:</label>
-            <input type="number" id="id" name="id" value="<%= tpUs != null ? tpUs.getId() : "" %>" required <%= tpUs != null ? "readonly" : "" %>> <br/>
+            <input type="text" pattern="[0-9]*" id="id" name="id" value="<%= tpUs != null ? tpUs.getId() : "" %>" required <%= tpUs != null ? "readonly" : "" %>> <br/>
+
             
             <input type="checkbox" id="modulo_administrativo" name="modulo_administrativo" value="S" <%= ( (tpUs != null) && ( tpUs.getModuloAdministrativo().equals("S") ) ) ? "checked" : "" %> >
             <label for="modulo_administrativo">Módulo Administrativo</label> <br> <br>
