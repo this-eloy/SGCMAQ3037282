@@ -230,6 +230,55 @@ public class FrontController extends HttpServlet {
         
         us.setTipoUsuarioId(tipoUsuarioId);
         
+        String nascimento = req.getParameter("nascimento");
+        if (nascimento.isBlank()){
+            nascimento = null;
+        }
+        
+        String logradouro = req.getParameter("logradouro");
+        if (logradouro.isBlank()){
+            logradouro = null;
+        }
+        
+        String numero = req.getParameter("numero");
+        if (numero.isBlank()){
+            numero = null;
+        }
+        
+        String bairro = req.getParameter("bairro");
+        if (bairro.isBlank()){
+            bairro = null;
+        }
+        
+        String cidade = req.getParameter("cidade");
+        if (cidade.isBlank()){
+            cidade = null;
+        }
+        
+        String estado = req.getParameter("estado");
+        if (estado.isBlank()){
+            estado = null;
+        }
+        
+        String uf = req.getParameter("uf");
+        if (uf.isBlank()){
+            uf = null;
+        }
+        String cep = req.getParameter("cep");
+        if (cep.isBlank()){
+            cep = null;
+        }
+        
+        us.setNascimento(nascimento);
+        us.setLogradouro(logradouro);
+        us.setNumero(numero);
+        us.setBairro(bairro);
+        us.setCidade(cidade);
+        us.setEstado(estado);
+        us.setUf(uf);
+        us.setCep(cep);
+        
+        
         UsuarioDAO dao = new UsuarioDAO(); // dao
         
         if( action.equals("new") ) dao.insert( us );
@@ -241,4 +290,4 @@ public class FrontController extends HttpServlet {
     }
     
 
-}
+}   

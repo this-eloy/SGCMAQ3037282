@@ -22,8 +22,8 @@
     <% if( ( tipoUsuarioSessao != null ) &&
             ( tipoUsuarioSessao.getModuloAdministrativo().equals("S") == true ) ) { %>
             
-            <li><a href="/sgcmaq3037282/home/app/adm/tipousuario.jsp">Tipos Usurio</a></li>
-            <li><a href="/sgcmaq3037282/home/app/adm/usuario.jsp">Usurios</a></li>
+            <li><a href="/sgcmaq3037282/home/app/adm/tipousuario.jsp">Tipos Usuário</a></li>
+            <li><a href="/sgcmaq3037282/home/app/adm/usuario.jsp">Usuários</a></li>
             
     <% } %>
     
