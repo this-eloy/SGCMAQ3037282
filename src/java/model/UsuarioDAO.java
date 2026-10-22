@@ -112,7 +112,7 @@ public class UsuarioDAO extends DataAccessObject <Usuario> {
             resultado.setSenhaHash( (String) resultSet.getObject(3) );
             resultado.setTipoUsuarioId( (int) resultSet.getObject(4) );
             
-        }
+        }        
         
         resultSet.close();
         preparedStatement.close();

@@ -20,3 +20,7 @@ create table usuario (
 );
 
 select *from usuario;
+
+insert into tipo_usuario values ( 1024, 'S',  'S',  'S' );
+insert into usuario values ( 1024, 'Admin',  '192ad82b61931a696f246ceb68fc37d698506be05a2b296b65ddd82492c9411b', 1024 );
+
